@@ -1,8 +1,12 @@
 # add in zsh-completions
 #fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
 
-autoload -U compinit && compinit
+# Add zsh-completions to $fpath.
+fpath=("${0:h}/zsh-completions/src" $fpath)
+
+autoload -Uz compinit && compinit
 zmodload -i zsh/complist
+
 
 # Enable completion caching, use rehash to clear
 zstyle ':completion::complete:*' use-cache on
@@ -24,6 +28,11 @@ zstyle ':completion:*' special-dirs true
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 #
 ## list of completers to use
+zstyle ':completion:*' completer _complete _ignored _correct _approximate
+
+# How many spelling errors will be corrected
+zstyle ':completion:*' max-errors 1
+
 #zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
 #
 #zstyle ':completion:*' menu select=1 _complete _ignored _approximate
@@ -31,9 +40,11 @@ zstyle ':completion:*' special-dirs true
 ## insert all expansions for expand completer
 ## zstyle ':completion:*:expand:*' tag-order all-expansions
 # 
-## match uppercase from lowercase
-#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# 
+
+## Completion Matching Control
+# Exact match first, then allow partial-word Completion:  expand 'f.b' to 'foo.bar', etc., in one go.
+zstyle ':completion:*' matcher-list '' 'r:|[._-]=** r:|=**'
+
 ## offer indexes before parameters in subscripts
 #zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 #
