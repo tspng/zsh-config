@@ -22,9 +22,6 @@ export EDITOR='vim'
 export PAGER='less'
 export LESSCHARSET='utf-8'
 
-# Homebrew
-export HOMEBREW_GITHUB_API_TOKEN=''
-
 # Java
 JAVA_HOME=`/usr/libexec/java_home`
 
