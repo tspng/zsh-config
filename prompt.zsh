@@ -7,7 +7,7 @@
 # Features:
 #   - One line.
 #   - Path information in the right prompt.
-#   - Shows the current branch name if vcs 
+#   - Shows the current branch name if vcs
 #   - Shows if logged in as root or not.
 #
 
@@ -22,8 +22,6 @@ zstyle ':vcs_info:*' nvcsformats "" ""
 
 function prompt_precmd {
     vcs_info
-    # Print current directory and command to terminal window title
-    print -Pn "\e]1;%~\a"
 }
 
 function set_prompt {
