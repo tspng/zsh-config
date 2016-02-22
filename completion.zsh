@@ -2,7 +2,8 @@
 #fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
 
 # Add zsh-completions to $fpath.
-fpath=("${0:h}/zsh-completions/src" $fpath)
+fpath=("${0:h}/extern/zsh-completions/src" $fpath)
+fpath=("${0:h}/completions" $fpath)
 
 autoload -Uz compinit && compinit
 zmodload -i zsh/complist
