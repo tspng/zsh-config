@@ -16,8 +16,8 @@ zstyle ':vcs_info:*' enable git svn hg
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' formats " (%s:%{$fg[yellow]%}%b%{$reset_color%}%m%u%c)"
-zstyle ':vcs_info:*' actionformats " (%s:%{$fg[yellow]%}%b%%{$reset_color}%m%u%c {%a})"
+zstyle ':vcs_info:*' formats " (%{$fg[yellow]%}%b%{$reset_color%}%m%u%c)"
+zstyle ':vcs_info:*' actionformats " (%{$fg[yellow]%}%b%{$reset_color%}) [%a]"
 zstyle ':vcs_info:*' nvcsformats "" ""
 
 function prompt_precmd {
