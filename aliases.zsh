@@ -1,8 +1,10 @@
 # General
-alias psgrep="ps wwaux | grep"
-alias rm_pyc="find . -name \*\.pyc -exec rm {} \;"
+alias psgrep="ps wwaux|grep"
 
-# Git
-alias gst="git status"
-alias gd="git diff"
-alias glo="git log --oneline --decorate=short"
+# Mac specific
+alias bs="brew services"
+alias clipkey="cat ~/.ssh/id_rsa.pub|pbcopy"
+
+# Development stuff
+alias activate='source `find . -name activate -type f|head -1)`'
+alias rm_pyc="find . -name \*\.pyc -exec rm {} \;"
