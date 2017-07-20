@@ -1,5 +1,5 @@
 # Path
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH
 export MANPATH=/usr/local/share/man:$MANPATH
 
 # Lanugage settings
