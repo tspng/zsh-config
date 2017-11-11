@@ -1,3 +1,3 @@
 [submodule "zsh-completions"]
 	path = extern/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions.git
+	url = git@github.com:zsh-users/zsh-completions.git
