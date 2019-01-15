@@ -1,5 +1,5 @@
 # Lanugage settings
-export LANG='de_CH.UTF-8'
+export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
 # CTAGS Sorting in VIM/Emacs is better behaved with this in place
 export LC_COLLATE=C
