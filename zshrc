@@ -1,3 +1,6 @@
+# Uncomment the following line to enable zsh startup function profiling
+#zmodload zsh/zprof
+
 ZCONF_BASE=${HOME}/.zsh
 
 source ${ZCONF_BASE}/functions.zsh
@@ -14,3 +17,6 @@ source ${ZCONF_BASE}/aliases.zsh
 source ${ZCONF_BASE}/bindkeys.zsh
 source ${ZCONF_BASE}/history.zsh
 source ${ZCONF_BASE}/zsh_hooks.zsh
+
+# Uncomment the following line list profiling results 
+#zprof

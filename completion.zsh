@@ -1,13 +1,13 @@
-# add in zsh-completions
-#fpath=(/opt/boxen/homebrew/share/zsh-completions $fpath)
-
 # Add zsh-completions to $fpath.
 fpath=("${0:h}/extern/zsh-completions/src" $fpath)
 fpath=("${0:h}/completions" $fpath)
 
-autoload -Uz compinit && compinit
-zmodload -i zsh/complist
+autoload -Uz compinit
+compinit
 
+# Enable ability to highlight matches, scroll through long lists and
+# a different style of completion menu
+zmodload -i zsh/complist
 
 # Enable completion caching, use rehash to clear
 zstyle ':completion::complete:*' use-cache on
