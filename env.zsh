@@ -1,5 +1,12 @@
 # PATH stuff
 typeset -U path
+
+# Homebrew
+if (( $+commands[brew] )); then
+    prepend_path /usr/local/sbin
+fi
+
+# Local binaries
 prepend_path ~/bin
 
 # Language settings
