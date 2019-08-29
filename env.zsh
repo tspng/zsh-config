@@ -45,10 +45,8 @@ if (( $+commands[pyenv] )); then
     eval "$(pyenv virtualenv-init -)"
 fi
 
-# Nvidia CUDA
-CUDA_VERSION=10.0
-CUDA_DIR=/Developer/NVIDIA/CUDA-${CUDA_VERSION}
-if [[ -d $CUDA_DIR ]]; then
-    append_path ${CUDA_DIR}/bin
-    export DYLD_LIBRARY_PATH=${CUDA_DIR}/lib${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
+# TEX Live
+TEXLIVE_DIR=/usr/local/texlive/2019
+if [[ -d $TEXLIVE_DIR ]]; then
+    append_path ${TEXLIVE_DIR}/bin/x86_64-darwin
 fi
