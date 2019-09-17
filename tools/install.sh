@@ -22,6 +22,7 @@ if [ -d "$ZSH_DIR" ]; then
     read answer
     if echo "$answer" | grep -iq "^y" ;then
         mv $ZSH_DIR $ZSH_DIR.backup
+        ZSH_DIR=$ZSH_INSTALL_DIR
     else
         printf "Abort installation.\n"
         exit
@@ -43,6 +44,14 @@ hash git >/dev/null 2>&1 || {
 printf "Cloning zsh-config repo...\n"
 env git clone --depth=1 $GIT_CLONE_URL $ZSH_DIR || {
     printf "Error: git clone of zsh-config repo failed\n"
+    exit 1
+}
+
+printf "Getting git submodules...\n"
+(cd $ZSH_DIR && \
+env git submodule update --init --recursive && \
+env git pull --recurse-submodules) || {
+    printf "Error: git submodule fetching failed\n"
     exit 1
 }
 
