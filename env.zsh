@@ -45,6 +45,12 @@ if (( $+commands[pyenv] )); then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+# TCL/Tk
+TK_BIN_PATH=/usr/local/opt/tcl-tk/bin
+if [[ -x $TK_BIN_PATH ]]; then
+    append_path $TK_BIN_PATH
+fi
+
 # TEX Live
 TEXLIVE_DIR=/usr/local/texlive/2019
 if [[ -d $TEXLIVE_DIR ]]; then
