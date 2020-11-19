@@ -1,4 +1,4 @@
-# Add zsh-completions to $fpath.
+# Add zsh-completions for Homebrew
 if type brew &>/dev/null; then
     fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fi
