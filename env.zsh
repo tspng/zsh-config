@@ -56,3 +56,9 @@ TEXLIVE_DIR=/usr/local/texlive/2019
 if [[ -d $TEXLIVE_DIR ]]; then
     append_path ${TEXLIVE_DIR}/bin/x86_64-darwin
 fi
+
+# Google Cloud SDK
+if (( $+commands[gcloud] )); then
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+fi
