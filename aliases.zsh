@@ -1,5 +1,6 @@
 # General
 alias psgrep='ps wwaux|grep'
+alias hgrep='history 1|grep'
 
 # Mac specific
 alias bs='brew services'
