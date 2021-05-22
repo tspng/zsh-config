@@ -22,6 +22,15 @@ zstyle ':vcs_info:*' nvcsformats "" ""
 
 function prompt_precmd {
     vcs_info
+    pyenv_info
+}
+
+function pyenv_info {
+    if (( ${+PYENV_VERSION} )); then
+        pyenv_info="($PYENV_VERSION) "
+    else
+        pyenv_info=""
+    fi
 }
 
 function set_prompt {
@@ -43,7 +52,10 @@ function set_prompt {
     fi
     local max_path_chars=35
 
-    PROMPT="[${name_color}%n%{$reset_color%}@%m"'${vcs_info_msg_0_}'"]%b%f "
+    # Make sure to escape the $ for pyenv_info, so that the string
+    # ${pyenv_info} will used. `prompt_subst` will then re-evaluate
+    # the string ${pyenv_info} on every new line.
+    PROMPT="\${pyenv_info}[${name_color}%n%{$reset_color%}@%m"'${vcs_info_msg_0_}'"]%b%f "
     RPROMPT="[%{$fg_bold[blue]%}%${max_path_chars}<...<%~%<<%{$reset_color%}]"
 }
 
