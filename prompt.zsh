@@ -29,7 +29,12 @@ function pyenv_info {
     if (( ${+PYENV_VERSION} )); then
         pyenv_info="($PYENV_VERSION) "
     else
-        pyenv_info=""
+        pyenv_local=$(pyenv local 2> /dev/null)
+        if [ $? -eq 0 ]; then
+            pyenv_info="($pyenv_local) "
+        else
+            pyenv_info=""
+        fi
     fi
 }
 
