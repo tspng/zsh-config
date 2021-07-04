@@ -16,6 +16,13 @@ autoload -Uz compinit
     fi
 }
 
+# Google Cloud SDK
+if (( $+commands[gcloud] )); then
+    local cask_path=$(brew --caskroom)
+    source "${cask_path}/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "${cask_path}/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+fi
+
 # Enable ability to highlight matches, scroll through long lists and
 # a different style of completion menu
 zmodload -i zsh/complist
