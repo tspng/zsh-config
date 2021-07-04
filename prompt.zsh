@@ -16,8 +16,8 @@ zstyle ':vcs_info:*' enable git svn hg
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' formats " (%{$fg[yellow]%}%b%{$reset_color%}%m%u%c)"
-zstyle ':vcs_info:*' actionformats " (%{$fg[yellow]%}%b%{$reset_color%}) [%a]"
+zstyle ':vcs_info:*' formats "(%{$fg[yellow]%}%b%{$reset_color%}%m%u%c) "
+zstyle ':vcs_info:*' actionformats "(%{$fg[yellow]%}%b%{$reset_color%}) [%a] "
 zstyle ':vcs_info:*' nvcsformats "" ""
 
 function prompt_precmd {
@@ -27,11 +27,11 @@ function prompt_precmd {
 
 function pyenv_info {
     if (( ${+PYENV_VERSION} )); then
-        pyenv_info="($PYENV_VERSION) "
+        pyenv_info="%F{blue}$PYENV_VERSION%f "
     else
         pyenv_local=$(pyenv local 2> /dev/null)
         if [ $? -eq 0 ]; then
-            pyenv_info="($pyenv_local) "
+            pyenv_info="%F{blue}${pyenv_local}%f "
         else
             pyenv_info=""
         fi
@@ -48,19 +48,15 @@ function set_prompt {
     # Add hook for calling vcs_info before each command.
     add-zsh-hook precmd prompt_precmd
 
-    # Color settings
-    local name_color="%{$fg[blue]%}"
-
-    if [[ $UID == 0 ]]; then
-    # Highlight root user
-        local name_color="%{$fg_bold[red]%}"
-    fi
     local max_path_chars=35
+    local return_status="%(?..%F{red}➜ %?%f )"
+    local prompt_symbol="%(!.%F{red}#%f.%B>%b) "
 
-    # Make sure to escape the $ for pyenv_info, so that the string
-    # ${pyenv_info} will used. `prompt_subst` will then re-evaluate
-    # the string ${pyenv_info} on every new line.
-    PROMPT="\${pyenv_info}[${name_color}%n%{$reset_color%}@%m"'${vcs_info_msg_0_}'"]%b%f "
+    # Make sure to escape the $ for pyenv_info and vcs_info_msg_0_,
+    # so that the string ${pyenv_info} will used. `prompt_subst` will then
+    # re-evaluate the string ${pyenv_info} on every new line.
+
+    PROMPT="${return_status}\${pyenv_info}\${vcs_info_msg_0_}${prompt_symbol}"
     RPROMPT="[%{$fg_bold[blue]%}%${max_path_chars}<...<%~%<<%{$reset_color%}]"
 }
 
