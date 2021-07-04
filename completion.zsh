@@ -2,7 +2,6 @@
 if type brew &>/dev/null; then
     fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fi
-fpath=("${0:h}/extern/zsh-completions/src" $fpath)
 fpath=("${0:h}/completions" $fpath)
 
 autoload -Uz compinit
