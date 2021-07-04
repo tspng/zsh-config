@@ -1,11 +1,20 @@
 # Add zsh-completions for Homebrew
-if type brew &>/dev/null; then
+if (( $+commands[brew] )); then
     fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fi
 fpath=("${0:h}/completions" $fpath)
 
 autoload -Uz compinit
-compinit
+() {
+    # run compinit in anonymous function so we can use extendedglob locally
+    setopt extendedglob local_options
+    # only recreate the dump file once a day
+    if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+        compinit
+    else
+        compinit -C
+    fi
+}
 
 # Enable ability to highlight matches, scroll through long lists and
 # a different style of completion menu
