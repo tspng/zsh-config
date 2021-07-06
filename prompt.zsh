@@ -51,12 +51,15 @@ function set_prompt {
     local max_path_chars=35
     local return_status="%(?..%F{red}➜ %?%f )"
     local prompt_symbol="%(!.%F{red}#%f.%B>%b) "
-
+    local prompt_host=""
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        prompt_host="%B@%b%m "
+    fi
     # Make sure to escape the $ for pyenv_info and vcs_info_msg_0_,
     # so that the string ${pyenv_info} will used. `prompt_subst` will then
     # re-evaluate the string ${pyenv_info} on every new line.
 
-    PROMPT="${return_status}\${pyenv_info}\${vcs_info_msg_0_}${prompt_symbol}"
+    PROMPT="${return_status}\${pyenv_info}${prompt_host}\${vcs_info_msg_0_}${prompt_symbol}"
     RPROMPT="[%{$fg_bold[blue]%}%${max_path_chars}<...<%~%<<%{$reset_color%}]"
 }
 
