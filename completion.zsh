@@ -6,9 +6,16 @@ fpath=("${0:h}/completions" $fpath)
 
 autoload -Uz compinit
 () {
-    # run compinit in anonymous function so we can use extendedglob locally
+    # Run compinit in anonymous function so we can use extendedglob locally
     setopt extendedglob local_options
-    # only recreate the dump file once a day
+
+    # Only recreate the dump file once a day
+    #
+    # Globbing explanation:
+    # - '#q' is an explicit glob qualifier that makes globbing work within [[ ]]
+    # - 'N' makes the glob pattern evaluate to empty string when it doesn't match
+    # - '.' matches "regular files"
+    # - 'mh+24' matches files that are older than 24 hours (modified hours+24)
     if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
         compinit
     else
