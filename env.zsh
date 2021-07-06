@@ -41,8 +41,7 @@ fi
 
 # pyenv
 if (( $+commands[pyenv] )); then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv init --path)"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 

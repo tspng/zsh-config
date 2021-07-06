@@ -23,6 +23,11 @@ if (( $+commands[gcloud] )); then
     source "${cask_path}/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
 
+# pyenv
+if (( $+commands[pyenv] )); then
+    eval "$(pyenv init -)"
+fi
+
 # Enable ability to highlight matches, scroll through long lists and
 # a different style of completion menu
 zmodload -i zsh/complist
