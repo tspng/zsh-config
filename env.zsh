@@ -41,13 +41,7 @@ if [[ -x $JAVA_HOME_PATH ]]; then
     export JAVA_HOME=`$JAVA_HOME_PATH`
 fi
 
-# Golang
-if (( $+commands[go] )); then
-    export GOPATH=~/Code/go
-    append_path /usr/local/opt/go/libexec/bin
-fi
-
-# pyenv
+# Pyenv
 if (( $+commands[pyenv] )); then
     eval "$(pyenv init --path)"
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
@@ -62,5 +56,5 @@ fi
 # TEX Live
 TEXLIVE_DIR=${HOMEBREW_PREFIX}/texlive/2021
 if [[ -d $TEXLIVE_DIR ]]; then
-    append_path ${TEXLIVE_DIR}/bin/x86_64-darwin
+    append_path ${TEXLIVE_DIR}/bin/universal-darwin
 fi
