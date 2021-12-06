@@ -1,8 +1,16 @@
 # PATH stuff
 typeset -U path
 
-# Homebrew
-if (( $+commands[brew] )); then
+# Homebrew for Apple Silicon
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    prepend_path /opt/homebrew/bin
+    prepend_path /opt/homebrew/sbin
+fi
+# Homebrew for Apple x86_64
+if [[ -x /usr/local/bin/brew ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+    prepend_path /usr/local/bin
     prepend_path /usr/local/sbin
 fi
 
@@ -46,13 +54,13 @@ if (( $+commands[pyenv] )); then
 fi
 
 # TCL/Tk
-TK_BIN_PATH=/usr/local/opt/tcl-tk/bin
+TK_BIN_PATH=${HOMEBREW_PREFIX}/opt/tcl-tk/bin
 if [[ -x $TK_BIN_PATH ]]; then
     append_path $TK_BIN_PATH
 fi
 
 # TEX Live
-TEXLIVE_DIR=/usr/local/texlive/2019
+TEXLIVE_DIR=${HOMEBREW_PREFIX}/texlive/2021
 if [[ -d $TEXLIVE_DIR ]]; then
     append_path ${TEXLIVE_DIR}/bin/x86_64-darwin
 fi
