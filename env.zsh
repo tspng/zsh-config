@@ -58,3 +58,10 @@ TEXLIVE_DIR=${HOMEBREW_PREFIX}/texlive/2021
 if [[ -d $TEXLIVE_DIR ]]; then
     append_path ${TEXLIVE_DIR}/bin/universal-darwin
 fi
+
+# McFly Ctrl-R replacement
+if (( $+commands[mcfly] )); then
+    export MCFLY_KEY_SCHEME=vim
+    export MCFLY_FUZZY=2
+    eval "$(mcfly init zsh)"
+fi
