@@ -1,5 +1,6 @@
 # Add zsh-completions for Homebrew
 if (( $+commands[brew] )); then
+    fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
     fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fi
 fpath=("${0:h}/completions" $fpath)
