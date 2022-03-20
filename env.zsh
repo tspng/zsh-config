@@ -65,3 +65,10 @@ if (( $+commands[mcfly] )); then
     export MCFLY_FUZZY=2
     eval "$(mcfly init zsh)"
 fi
+
+# Fzf Ctrl-R replacement
+if (( $+commands[fzf] )); then
+    # Auto-completion
+    [[ $- == *i* ]] && source "${HOMEBREW_PREFIX}/opt/fzf/shell/completion.zsh"  # 2> /dev/null
+    source "${HOMEBREW_PREFIX}/opt/fzf/shell/key-bindings.zsh"
+fi
