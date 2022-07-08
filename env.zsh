@@ -47,6 +47,11 @@ if (( $+commands[pyenv] )); then
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 
+# Pyenv
+if (( $+commands[pipx] )); then
+    prepend_path $HOME/.local/bin
+fi
+
 # TCL/Tk
 TK_BIN_PATH=${HOMEBREW_PREFIX}/opt/tcl-tk/bin
 if [[ -x $TK_BIN_PATH ]]; then
