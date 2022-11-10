@@ -16,6 +16,8 @@ fi
 
 # Local binaries
 prepend_path ~/bin
+# pipx path
+prepend_path ~/.local/bin
 
 # Language settings
 export LANG='en_US.UTF-8'
@@ -41,15 +43,16 @@ if [[ -x $JAVA_HOME_PATH ]]; then
     export JAVA_HOME=`$JAVA_HOME_PATH`
 fi
 
-# Pyenv
-if (( $+commands[pyenv] )); then
-    eval "$(pyenv init --path)"
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-fi
-
-# Pyenv
+# pipx
 if (( $+commands[pipx] )); then
     prepend_path $HOME/.local/bin
+fi
+
+# pyenv
+if (( $+commands[pyenv] )); then
+    export PYENV_ROOT=$HOME/.pyenv
+    prepend_path "$PYENV_ROOT/bin"
+    eval "$(pyenv init -)"
 fi
 
 # TCL/Tk

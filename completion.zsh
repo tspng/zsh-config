@@ -31,9 +31,9 @@ if (( $+commands[gcloud] )); then
     source "${cask_path}/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
 
-# pyenv
-if (( $+commands[pyenv] )); then
-    eval "$(pyenv init -)"
+# pipx
+if (( $+commands[pipx] )); then
+    eval "$(register-python-argcomplete pipx)"
 fi
 
 # Enable ability to highlight matches, scroll through long lists and
