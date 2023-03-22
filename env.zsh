@@ -16,8 +16,6 @@ fi
 
 # Local binaries
 prepend_path ~/bin
-# pipx path
-prepend_path ~/.local/bin
 
 # Language settings
 export LANG='en_US.UTF-8'
@@ -50,8 +48,7 @@ fi
 
 # pyenv
 if (( $+commands[pyenv] )); then
-    export PYENV_ROOT=$HOME/.pyenv
-    prepend_path "$PYENV_ROOT/bin"
+    export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
 fi
 
